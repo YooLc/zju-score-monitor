@@ -1,0 +1,3 @@
+[submodule "zjuam"]
+	path = zjuam
+	url = https://github.com/zjuyfy/zjuam.git
