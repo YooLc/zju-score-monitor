@@ -14,7 +14,9 @@ pip install -r requirements.txt
 
 3. 创建一个只有自己的钉钉群，然后按照 [钉钉自定义机器人接入](https://open.dingtalk.com/document/orgapp/custom-robot-access) 中的前三步添加一个自定义机器人，并修改 `ACCESS_TOKEN` 为你 webhook 网址中 `access_token=` 后面的部分，然后把 `SECRET` （就是前面教程中第三步里加签的内容）填上。
 
-4. 使用 crontab 或者其他计划任务的方式定时执行 `python monitor.py` 即可
+4. 使用 crontab 或者其他计划任务的方式定时执行 `python monitor.py` 即可。
+
+# 请不要以过高频率运行此脚本，否则后果自负 orz 请在出完分后取消计划任务
 
 # 注意
 
