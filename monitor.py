@@ -74,24 +74,26 @@ def score_monitor(curList, preList):
     for course in curList:
         if course in preList:
             continue
+        # 出分提醒
         title = '你的【{}】出分啦！'.format(course['kcmc'])
         message = '[撒花]你修读的【**{}**】出分啦！\n\n[二哈]你的成绩为:【**{}**】\n\n[狗子]获得绩点:【**{}**】'\
                    .format(course['kcmc'], course['cj'], course['jd'])
         dingtalk_push(title, message)
+        # 绩点提醒
+        deltaGPA = curGPA - preGPA
+        if deltaGPA > 0:
+            title = '【{}】出分绩点变动提醒'.format(course['kcmc'])
+            message = '[等一等]**检测到绩点变动**\n\nGPA: **{:.2f}** (+{:.2f}) [撒花]' \
+                    .format(curGPA, deltaGPA)
+            dingtalk_push(title, message)
+        elif deltaGPA < 0:
+            title = '【{}】出分绩点变动提醒'.format(course['kcmc'])
+            message = '[等一等]**检测到绩点变动**\n\nGPA: **{:.2f}** (-{:.2f}) [跪了]' \
+                    .format(curGPA, -deltaGPA)
+            dingtalk_push(title, message)
         print("Score has changed!")
         print(course)
         changed = True
-    deltaGPA = curGPA - preGPA
-    if deltaGPA > 0:
-        title = '【{}】出分绩点变动提醒'.format(course['kcmc'])
-        message = '[等一等]**检测到绩点变动**\n\nGPA: **{:.2f}** (+{:.2f}) [撒花]' \
-                   .format(curGPA, deltaGPA)
-        dingtalk_push(title, message)
-    elif deltaGPA < 0:
-        title = '【{}】出分绩点变动提醒'.format(course['kcmc'])
-        message = '[等一等]**检测到绩点变动**\n\nGPA: **{:.2f}** (-{:.2f}) [跪了]' \
-                   .format(curGPA, -deltaGPA)
-        dingtalk_push(title, message)
     if not changed:
         print("Score was unchanged.")
 
