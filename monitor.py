@@ -9,13 +9,13 @@ import base64
 import hashlib
 import requests
 import urllib.parse
-import zjuam.zjuam
+import zjuam
 
 ACCESS_TOKEN = '' # 钉钉机器人的 Access Token
 SECRET = ''       # 钉钉机器人加签的 Secret
 USERNAME = ''     # 学号
 PASSWORD = ''     # 密码
-CURRENT_SEMESTER = ''  # 查询成绩 / 计算均绩的学年
+CURRENT_SEMESTER = ''  # 查询成绩 & 计算均绩的学年
 
 login = zjuam.login(USERNAME, PASSWORD)
 
